@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "./ApplyJobForm.css";
 
 // ✅ DIRECT BACKEND API
-const API = "http://localhost:5000/api/applied";
 
-// ✅ DIRECT DOMAIN (no .env)
-const DOMAIN = "orangeitech.in";
+const API = process.env.REACT_APP_API_BASE_URL;
+const DOMAIN = process.env.REACT_APP_DOMAIN;
 
 const ApplyJobForm = ({ isOpen, onClose, jobTitle }) => {
   const [formData, setFormData] = useState({
@@ -42,7 +41,7 @@ const ApplyJobForm = ({ isOpen, onClose, jobTitle }) => {
       data.append("fullName", formData.fullName);
       data.append("email", formData.email);
       data.append("phone", formData.phone);
-
+      
       // OPTIONAL
       data.append("country", formData.country);
       data.append("coverLetter", formData.coverLetter);
@@ -52,7 +51,7 @@ const ApplyJobForm = ({ isOpen, onClose, jobTitle }) => {
         data.append("resume", formData.file);
       }
 
-      const res = await fetch(API, {
+      const res = await fetch(`${API}/api/applied`, {
         method: "POST",
         headers: {
           "x-domain": DOMAIN, // ✅ middleware support
@@ -77,7 +76,9 @@ const ApplyJobForm = ({ isOpen, onClose, jobTitle }) => {
   return (
     <div className="apply-job-overlay">
       <div className="apply-job-popup">
-        <button className="close-btn" onClick={onClose}>✖</button>
+        <button className="close-btn" onClick={onClose}>
+          ✖
+        </button>
 
         <h2>Apply for {jobTitle}</h2>
 

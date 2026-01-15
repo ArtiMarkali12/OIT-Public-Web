@@ -56,16 +56,19 @@ export default function Footer() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About Us</Link>
+              <Link to="/about-us">About Us</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/courses">Courses</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/blogs">Blogs</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact-us">Contact</Link>
+            </li>
+            <li>
+              <Link to="/careers">Career</Link>
             </li>
           </ul>
         </div>
@@ -75,17 +78,17 @@ export default function Footer() {
           <h4>Services</h4>
           <ul>
             <li>
-              <Link to="/internship">Internship</Link>
+              <Link to="/careers">Internship</Link>
             </li>
             <li>
               <Link to="/placement">Placements</Link>
             </li>
             <li>
-              <Link to="/batches">Upcoming Batches</Link>
+              <Link to="/">Upcoming Batches</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/events">Events</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
 

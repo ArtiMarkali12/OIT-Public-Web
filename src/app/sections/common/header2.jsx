@@ -1,9 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import ItodoImage from "../../elements/itodo-img";
 import { useState, useEffect } from "react";
 import { loadScript } from "../../../globals/constants";
 import "../../sections/common/header2.css";
-import { useLocation } from "react-router-dom";
 
 function Header2() {
   const [isActive, setIsActive] = useState(false);
@@ -17,67 +16,40 @@ function Header2() {
   }, []);
 
   useEffect(() => {
-    setIsCoursesOpen(false); // close courses dropdown
-    setIsActive(false); // close mobile navbar
+    setIsCoursesOpen(false);
+    setIsActive(false);
   }, [location.pathname]);
 
   return (
-    <header
-      className={`header-nav navbar-collapse d-flex justify-content-center ${
-        isActive ? "active" : ""
-      }`}
-    >
+    /* ✅ FIX 1: removed navbar-collapse from header */
+    <header className={`header-nav ${isActive ? "active" : ""}`}>
       <div className="sticky-header main-bar-wraper navbar-expand-lg">
         <div className="main-bar">
-          <div className="container clearfix">
+          <div className="container clearfix" style={{display:"flex"}}>
             {/* LOGO */}
-            <div className="logo-header">
-              <div className="logo-header-inner logo-header-one">
-                <NavLink to="/index2">
-                  <ItodoImage src="images/courses/logo.png" alt="Logo" />
-                </NavLink>
-              </div>
+            <div className="logo-header d-flex justify-content-between align-items-center">
+              <NavLink to="/index2">
+                <ItodoImage src="images/courses/logo.png" alt="Logo" />
+              </NavLink>
+              {/* MOBILE TOGGLE */}
+              <button className="navbar-toggler" onClick={toggleNavClass}>
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+              </button>
             </div>
 
-            {/* MOBILE TOGGLE */}
-            <button
-              id="mobile-side-drawer"
-              className="navbar-toggler collapsed"
-              onClick={toggleNavClass}
-            >
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar icon-bar-first" />
-              <span className="icon-bar icon-bar-two" />
-              <span className="icon-bar icon-bar-three" />
-            </button>
-
-            {/* MAIN NAV */}
-            <div className="header-nav navbar-collapse collapse d-flex justify-content-center">
+            {/* ✅ FIX 2: cleaned navbar-collapse */}
+            <div className="navbar-collapse">
               <ul className="nav navbar-nav">
-                {/* HOME */}
                 <li>
-                  <NavLink to="/index2">Home</NavLink>
-                  {/* <ul className="sub-menu"> */}
-                  {/* <li>
-                      <Nav
-                      Link to="/index">Home-1</Nav>
-                    </li> */}
-                  {/* <li>
-                      <NavLink to="/index2">Home-1</NavLink>
-                    </li> */}
-                  {/* <li>
-                      <NavLink to="/index3">Home-3</NavLink>
-                    </li> */}
-                  {/* </ul> */}
+                  <NavLink to="/">Home</NavLink>
                 </li>
-                {/* COURSES */}
-                <li
-                  className="nav-item"
-                  onMouseLeave={() => setIsCoursesOpen(false)} // Optional: close on mouse leave
-                >
+
+                {/* ✅ FIX 3: add open class */}
+                <li className={`nav-item ${isCoursesOpen ? "open" : ""}`}>
                   <NavLink
                     to="/courses"
-                    className="nav-link"
                     onClick={(e) => {
                       e.preventDefault();
                       setIsCoursesOpen((prev) => !prev);
@@ -85,8 +57,11 @@ function Header2() {
                   >
                     Courses
                   </NavLink>
+
                   {isCoursesOpen && (
-                    <ul className="sub-menu courses-dropdown">
+
+
+                        <ul className="sub-menu courses-dropdown" >
                       {/* Column 1 */}
                       <li>
                         <div className="dropdown-column">
@@ -208,24 +183,20 @@ function Header2() {
                     </ul>
                   )}
                 </li>
-                {/* COMPANY */}
+
                 <li>
-                  <NavLink to="/about-us">About Us </NavLink>
-                
+                  <NavLink to="/about-us">About Us</NavLink>
                 </li>
-                {/* BLOG */}
                 <li>
                   <NavLink to="/blogs">Blogs</NavLink>
                 </li>
-                {/* CONTACT */}
-                {/* Career */}
                 <li>
                   <NavLink to="/careers">Careers</NavLink>
                 </li>
-
                 <li>
                   <NavLink to="/placement">Placement</NavLink>
                 </li>
+
                 <li className="nav-cta">
                   <NavLink to="/contact-us" className="enquire-btn">
                     Enquiry Now

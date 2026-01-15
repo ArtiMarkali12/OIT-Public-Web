@@ -4,12 +4,15 @@ import "./BlogGridPage.css";
 
 const API_BASE = process.env.REACT_APP_API_BASE_URL;
 const DOMAIN = process.env.REACT_APP_DOMAIN;
+
 export default function BlogGridPage() {
   const [blogs, setBlogs] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [loading, setLoading] = useState(true); // ✅ loader state
 
   // ================= FETCH BLOGS =================
   const fetchBlogs = async () => {
+    setLoading(true); // start loader
     try {
       const res = await axios.get(`${API_BASE}/api/blogs`, {
         headers: {
@@ -19,6 +22,8 @@ export default function BlogGridPage() {
       setBlogs(res.data || []);
     } catch (err) {
       console.error("Failed to load blogs", err);
+    } finally {
+      setLoading(false); // stop loader
     }
   };
 
@@ -30,20 +35,28 @@ export default function BlogGridPage() {
     <div className="blog-page">
       <h2 className="page-title">Our Blogs</h2>
 
-      {/* ================= GRID ================= */}
-      <div className="blog-grid">
-        {blogs.map((b) => (
-          <div key={b._id} className="blog-card">
-            {b.image && <img src={b.image} alt="blog" />}
-            <div className="blog-content">
-              <h4>{b.title}</h4>
-              <small>By {b.author}</small>
-              <p>{b.paragraphs?.slice(0, 2).join(" ")}</p>
-              <button onClick={() => setSelectedBlog(b)}>Read More</button>
+      {/* ================= LOADER ================= */}
+      {loading ? (
+        <div className="loader-container">
+          <div className="loader"></div>
+          <p>Loading blogs...</p>
+        </div>
+      ) : (
+        /* ================= GRID ================= */
+        <div className="blog-grid">
+          {blogs.map((b) => (
+            <div key={b._id} className="blog-card">
+              {b.image && <img src={b.image} alt="blog" />}
+              <div className="blog-content">
+                <h4>{b.title}</h4>
+                <small>By {b.author}</small>
+                <p>{b.paragraphs?.slice(0, 2).join(" ")}</p>
+                <button onClick={() => setSelectedBlog(b)}>Read More</button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* ================= MODAL ================= */}
       {selectedBlog && (

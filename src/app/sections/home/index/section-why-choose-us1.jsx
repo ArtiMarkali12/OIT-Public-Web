@@ -225,7 +225,7 @@ function SectionWhyChooseUs1() {
               <h2 className="sx-title">Why Orange Itech Institute</h2>
             </div>
           </div>
-          
+
           <div className="section-content">
             <div className="sx-icon-bx-wrap">
               <div className="row">
@@ -297,7 +297,7 @@ function SectionWhyChooseUs1() {
                     </div>
                   </div>
                 </div>
-              
+
                 {/* 4 */}
                 <div
                   className="col-lg-4 col-md-6 col-sm-12 wow fadeInUp"

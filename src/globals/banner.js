@@ -2,8 +2,7 @@ export const bannerData = {
     about: {
         background: "images/banner/bnr-13.jpg",
         title: "About Us",
-        crumb: "About Us",
-        watermark: "It Solution"
+        
     },
     faq: {
         background: "images/banner/bnr-4.jpg",

@@ -10,11 +10,15 @@ const DOMAIN = process.env.REACT_APP_DOMAIN;
 function Placement() {
   const [placements, setPlacements] = useState([]);
   const [selectedImg, setSelectedImg] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
 
   /* ================= FETCH PLACEMENTS ================= */
   const fetchPlacements = useCallback(async () => {
     try {
+      setLoading(true);
+
       const { data } = await axios.get(`${API}/api/placements`, {
         headers: { "x-domain": DOMAIN },
       });
@@ -22,6 +26,8 @@ function Placement() {
       setPlacements(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Failed to fetch placements", error);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -76,49 +82,64 @@ function Placement() {
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="row">
-            {placements.map((item, index) => (
-              <div key={item._id || index} className="col-lg-3 col-md-6 mb-4">
-                <div
-                  className="placement-card text-center"
-                  onClick={() => openImage(item.image)}
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <span className="placement-OrangeITech-head">
-                    OrangeITech
-                  </span>
+          {/* ================= LOADER ================= */}
+          {loading && (
+            <div className="row justify-content-center">
+              <div className="col-12 text-center">
+                <div className="placement-loader"></div>
+                <p className="mt-3">Loading placements...</p>
+              </div>
+            </div>
+          )}
 
-                  <div className="placement-img">
-                    <img
-                      src={item.image || "https://via.placeholder.com/120"}
-                      alt={item.name || "Placed Student"}
-                      loading="lazy"
-                    />
-                  </div>
+          {/* ================= PLACEMENT CARDS ================= */}
+          {!loading && (
+            <div className="row">
+              {placements.map((item, index) => (
+                <div key={item._id || index} className="col-lg-3 col-md-6 mb-4">
+                  <div
+                    className="placement-card text-center"
+                    onClick={() => openImage(item.image)}
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <span className="placement-OrangeITech-head">
+                      OrangeITech
+                    </span>
 
-                  <h5>{item.name}</h5>
-                  <p>
-                    <strong>Position : </strong>{item.position}
-                  </p>
-                  <h6>
-                    <strong>Company : </strong>{item.company}
-                  </h6>
+                    <div className="placement-img">
+                      <img
+                        src={item.image || "https://via.placeholder.com/120"}
+                        alt={item.name || "Placed Student"}
+                        loading="lazy"
+                      />
+                    </div>
 
-                  <p className="student-college">
-                    <strong>College Name : </strong> {" "}
-                    {item.college || "College Name"}
-                  </p>
+                    <h5>{item.name}</h5>
 
-                  <div className="student-package">
-                   <strong>Package : </strong> {item.packageAmount || "Package Not Disclosed"}
+                    <p>
+                      <strong>Position : </strong> {item.position}
+                    </p>
+
+                    <h6>
+                      <strong>Company : </strong> {item.company}
+                    </h6>
+
+                    <p className="student-college">
+                      <strong>College Name : </strong>{" "}
+                      {item.college || "College Name"}
+                    </p>
+
+                    <div className="student-package">
+                      <strong>Package : </strong>{" "}
+                      {item.packageAmount || "Package Not Disclosed"}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* ================= LIGHTBOX ================= */}
           {selectedImg && (

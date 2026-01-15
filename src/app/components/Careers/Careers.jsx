@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
 import ApplyJobForm from "./ApplyJobForm";
-import axios from "axios"; // ✅ axios import
+import axios from "axios";
 
 const API = process.env.REACT_APP_API_BASE_URL;
 const DOMAIN = process.env.REACT_APP_DOMAIN;
@@ -23,6 +23,7 @@ const Careers = () => {
 
   useEffect(() => {
     const fetchJobs = async () => {
+      setLoading(true); // ✅ loader start
       try {
         const res = await axios.get(`${API}/api/careers/public`, {
           headers: { domain: DOMAIN },
@@ -39,14 +40,21 @@ const Careers = () => {
         console.error("Error fetching careers:", err);
         setError("Server error");
       } finally {
-        setLoading(false);
+        setLoading(false); // ✅ loader stop
       }
     };
 
     fetchJobs();
   }, []);
 
-  if (loading) return <p style={{ textAlign: "center" }}>Loading careers...</p>;
+  if (loading)
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+        <p>Loading careers...</p>
+      </div>
+    );
+
   if (error)
     return <p style={{ color: "red", textAlign: "center" }}>{error}</p>;
 
