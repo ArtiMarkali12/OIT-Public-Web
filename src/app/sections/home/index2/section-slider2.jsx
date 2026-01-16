@@ -153,12 +153,21 @@ function SectionSlider2() {
                   <tr key={batch._id} style={{ background: index % 2 === 0 ? "#fafafa" : "#fff", transition: "all 0.3s ease", cursor: "pointer" }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = "#f0f0f0")}
                       onMouseLeave={(e) => (e.currentTarget.style.background = index % 2 === 0 ? "#fafafa" : "#fff")}>
-                    <td style={tdStyle}>{batch.course}</td>
+                    {/* <td style={tdStyle}>{batch.course}</td>
                     <td style={tdStyle}>{batch.subHeading}</td>
                     <td style={tdStyle}>{batch.description}</td>
                     <td style={tdStyle}>{batch.date || "-"}</td>
                     <td style={tdStyle}>{batch.time || "-"}</td>
-                    <td style={tdStyle}>
+                    <td style={tdStyle}> */}
+
+
+                    <td data-label="Course" style={tdStyle}>{batch.course}</td>
+<td data-label="Batch" style={tdStyle}>{batch.subHeading}</td>
+<td data-label="Description" style={tdStyle}>{batch.description}</td>
+<td data-label="Date" style={tdStyle}>{batch.date || "-"}</td>
+<td data-label="Time" style={tdStyle}>{batch.time || "-"}</td>
+<td data-label="Action" style={tdStyle}>
+
                       <NavLink to="/contact-us" className="orange-btn" style={{ padding: "1px 3px", fontSize: "12px", borderRadius: "16px", backgroundColor: "#FFB400", color: "#000", fontWeight: "700", transition: "all 0.2s ease" }}
                                onMouseEnter={(e)=>{e.currentTarget.style.backgroundColor="#e6a200"; e.currentTarget.style.transform="scale(1.05)"}}
                                onMouseLeave={(e)=>{e.currentTarget.style.backgroundColor="#FFB400"; e.currentTarget.style.transform="scale(1)"}}>

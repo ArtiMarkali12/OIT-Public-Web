@@ -104,9 +104,9 @@ function Placement() {
                     role="button"
                     tabIndex={0}
                   >
-                    <span className="placement-OrangeITech-head">
-                      OrangeITech
-                    </span>
+                    {/* <span className="placement-OrangeITech-head">
+                      Congragulations
+                    </span> */}
 
                     <div className="placement-img">
                       <img
@@ -123,7 +123,7 @@ function Placement() {
                     </p>
 
                     <h6>
-                      <strong>Company : </strong> {item.company}
+                      <strong>Company : </strong> <b>{item.company}</b>
                     </h6>
 
                     <p className="student-college">

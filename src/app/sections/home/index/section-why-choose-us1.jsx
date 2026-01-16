@@ -5,7 +5,7 @@ import SectionVideo1 from "./section-video1";
 function SectionWhyChooseUs1() {
   return (
     <>
-      {/* INLINE CSS INSIDE JSX */}
+      {/* INLINE CSS — ONLY ADDED VIDEO RESPONSIVE STYLES */}
       <style>{`
         /* ================= WHY CHOOSE US SECTION ================= */
         .hover-box {
@@ -34,186 +34,207 @@ function SectionWhyChooseUs1() {
           }
         }
    
- .about-wrapper {
-  width: 100%;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  margin-bottom: 50px;
-}
+        .about-wrapper {
+          width: 100%;
+        
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          margin-bottom: 3px;
+        }
 
-/* Content box */
-.about-content {
-  max-width: 1100px;
-  text-align: center;
-}
+        .about-content {
+          max-width: 1100px;
+          text-align: center;
+        }
 
-/* Title */
-.sx-title {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.7;
-  color: #222;
-  margin-bottom: 15px;
-}
+        .sx-title {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.7;
+          color: #222;
+          margin-bottom: 15px;
+        }
 
-/* Description */
-.sx-desc {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #555;
-}
+        .sx-desc {
+          font-size: 16px;
+          line-height: 1.8;
+          color: #555;
+        }
 
-/* Animation */
-.animate-fade-up {
-  animation: fadeUp 1.2s ease-in-out both;
-}
+        .animate-fade-up {
+          animation: fadeUp 1.2s ease-in-out both;
+        }
 
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+        @keyframes fadeUp {
+          0% {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-/* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+          .sx-title {
+            font-size: 16px;
+          }
 
-@media (max-width: 768px) {
-  .sx-title {
-    font-size: 16px;
-  }
+          .sx-desc {
+            font-size: 14px;
+          }
 
-  .sx-desc {
-    font-size: 14px;
-  }
+          .about-content {
+            text-align: left;
+          }
+        }
 
-  .about-content {
-    text-align: left;
-  }
-}
+        @media (max-width: 480px) {
+          .about-wrapper {
+            padding: 15px 10px;
+          }
 
-@media (max-width: 480px) {
-  .about-wrapper {
-    padding: 15px 10px;
-  }
+          .sx-title {
+            font-size: 15px;
+          }
 
-  .sx-title {
-    font-size: 15px;
-  }
-
-  .sx-desc {
-    font-size: 13.5px;
-  }
-}
-
-
+          .sx-desc {
+            font-size: 13.5px;
+          }
+        }
 
         /* ================= ALUMNI SECTION ================= */
 
-.alumni-section {
-  padding: 80px 0;
-  background: radial-gradient(circle at top, #7f5404ff, #000000ff);
-  overflow: hidden;
-}
+        .alumni-section {
+          padding: 80px 0;
+          background: radial-gradient(circle at top, #7f5404ff, #000000ff);
+          overflow: hidden;
+        }
 
-.alumni-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
+        .alumni-title {
+          text-align: center;
+          margin-bottom: 40px;
+        }
 
-.alumni-title h3 {
-  display: inline-block;
-  background: #eef6ff;
-  padding: 14px 30px;
-  border-radius: 14px;
-  font-size: 26px;
-  font-weight: 700;
-  color: #0b224a;
-}
+        .alumni-title h3 {
+          display: inline-block;
+          background: #eef6ff;
+          padding: 14px 30px;
+          border-radius: 14px;
+          font-size: 26px;
+          font-weight: 700;
+          color: #0b224a;
+        }
 
-.alumni-title h3 span {
-  color: #ff7a00;
-}
+        .alumni-title h3 span {
+          color: #ff7a00;
+        }
 
-/* Slider */
-.alumni-slider {
-  width: 100%;
-  overflow: hidden;
-}
+        .alumni-slider {
+          width: 100%;
+          overflow: hidden;
+        }
 
-.alumni-track {
-  display: flex;
-  gap: 28px;
-  animation: scrollX 15s linear infinite;
-}
+        .alumni-track {
+          display: flex;
+          gap: 28px;
+          animation: scrollX 15s linear infinite;
+        }
 
-/* Card */
-.alumni-card {
-  min-width: 220px;
-  height: 120px;
-  background: #fff;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 25px rgba(255, 123, 0, 0.6);
-  transition: all 0.4s ease;
-}
+        .alumni-card {
+          min-width: 220px;
+          height: 120px;
+          background: #fff;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 25px rgba(255, 123, 0, 0.6);
+          transition: all 0.4s ease;
+        }
 
-.alumni-card img {
-  max-width: 150px;
-  max-height: 70px;
-  object-fit: contain;
-}
+        .alumni-card img {
+          max-width: 150px;
+          max-height: 70px;
+          object-fit: contain;
+        }
 
-/* Hover */
-.alumni-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 40px rgba(255, 123, 0, 0.9);
-}
+        .alumni-card:hover {
+          transform: translateY(-10px) scale(1.05);
+          box-shadow: 0 0 40px rgba(255, 123, 0, 0.9);
+        }
 
-/* Animation */
-@keyframes scrollX {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+        @keyframes scrollX {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
 
-/* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+          .alumni-card {
+            min-width: 180px;
+            height: 100px;
+          }
 
-@media (max-width: 768px) {
-  .alumni-card {
-    min-width: 180px;
-    height: 100px;
-  }
+          .alumni-title h3 {
+            font-size: 20px;
+            padding: 10px 22px;
+          }
+        }
 
-  .alumni-title h3 {
-    font-size: 20px;
-    padding: 10px 22px;
-  }
-}
+        @media (max-width: 480px) {
+          .alumni-card {
+            min-width: 150px;
+            height: 90px;
+          }
 
-@media (max-width: 480px) {
-  .alumni-card {
-    min-width: 150px;
-    height: 90px;
-  }
+          .alumni-card img {
+            max-width: 120px;
+          }
+        }
 
-  .alumni-card img {
-    max-width: 120px;
-  }
-}
+        /* =============== VIDEO RESPONSIVE WRAPPER (NEW) =============== */
+        .video-responsive-wrapper {
+          width: 100%;
+          max-width: 700px;
+          margin: 30px auto;
+          
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+          position: relative;
+        }
 
+        .video-responsive-wrapper::before {
+          content: "";
+          display: block;
+          padding-top: 58%; /* Slightly taller than standard 56.25% */
+          margin-top:10px;
+        }
 
+        .video-responsive-wrapper > * {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        @media (max-width: 768px) {
+          .video-responsive-wrapper::before {
+            padding-top: 60%; /* Even taller on mobile */
+          }
+          .video-responsive-wrapper {
+            margin: 25px 10px;
+            border-radius: 12px;
+          }
+        }
       `}</style>
 
       <div className="section-full p-t110 p-b80 sx-why-chooseus-outer  bg-cover">
@@ -388,9 +409,12 @@ function SectionWhyChooseUs1() {
           </div>
         </div>
       </section>
-      <br />
-      <SectionVideo1 />
-      <br />
+
+      {/* ✅ VIDEO WRAPPED IN RESPONSIVE CONTAINER — HEIGHT INCREASED */}
+      <div className="video-responsive-wrapper">
+        <SectionVideo1 />
+      </div>
+
       <section>
         <div className="alumni-section">
           <div className="container">

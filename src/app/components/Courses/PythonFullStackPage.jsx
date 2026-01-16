@@ -532,14 +532,14 @@ export default function PythonFullStackPage() {
 
             <div className="hero-buttons">
               <a
-                href="/enquiry"
+                href="/contact-us"
                 className="btn-primary"
                 style={{ textDecoration: "none" }}
               >
                 Download Syllabus
               </a>
               <a
-                href="/enquiry"
+                href="/contact-us"
                 className="btn-outline"
                 style={{ textDecoration: "none" }}
               >
@@ -801,7 +801,7 @@ export default function PythonFullStackPage() {
 
               {/* <Button className=" "></Button> */}
               <a
-                href="/enquiry"
+                href="/contact-us"
                 className="hero-buttons btn-primary mt-4"
                 style={{ textDecoration: "none", width: "180px" }}
               >
@@ -1089,7 +1089,7 @@ export default function PythonFullStackPage() {
       {/* ===== CTA ===== */}
       <section className="cta-section text-center">
         <h2>Start Your IT Career Today</h2>
-        <a href="/enquiry" className="btn btn-primary cta-btn">
+        <a href="/contact-us" className="btn btn-primary cta-btn">
           Book Free Demo
         </a>
       </section>
