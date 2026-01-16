@@ -1497,15 +1497,6 @@ p, li, span, .btn, .card-text {
   margin-bottom: 22px;
 }
 
-.angular-title{
-   font-size: 38px;
-  font-weight: 700;
-  color: #0b1c4d;
-  margin-bottom: 22px;
-  text-align:center;
-  
-  
-}
 
 
 .who-title {
@@ -1540,12 +1531,4 @@ p, li, span, .btn, .card-text {
   color: #0b1c4d;
   margin-bottom: 22px;
   text-align: center;  
-}
-.angular-title{
-  font-size: 38px;
-  font-weight: 700;
-  color: #0b1c4d;
-  margin-bottom: 22px;
-  text-align: center;     /* centers text */
-  white-space: nowrap;
 }

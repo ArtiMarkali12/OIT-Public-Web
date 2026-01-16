@@ -725,7 +725,7 @@ export default function JavaFullStackPage() {
               <div className="about-image-bg ">
                 {/* <img src={JavaImg} alt="About Course" className="about-image" /> */}
                 <img
-    src={publicUrlFor("images/courses/javaImg.jpg")}
+    src={publicUrlFor("images/courses/JavaImg.jpg")}
     alt="Java Course Image"
     className="gallery-image"
   />
