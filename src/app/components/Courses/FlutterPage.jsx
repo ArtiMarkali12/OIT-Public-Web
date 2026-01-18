@@ -40,6 +40,7 @@ import {
 import "../Courses/courses.css";
 import { useState } from "react";
 import SocialButtons from "./SocialButtons";
+import FloatingSocialButtons from "../FloatingSocialButtons";
 // import SocialButtons from "./SocialButtons";
 
 export default function FlutterPage() {
@@ -1099,7 +1100,9 @@ export default function FlutterPage() {
           </Row>
         </Container>
       </section>
-      {/* <SocialButtons /> */}
+     
+
+     <FloatingSocialButtons/>
 
       {/* ===== CTA ===== */}
       <section className="cta-section text-center">

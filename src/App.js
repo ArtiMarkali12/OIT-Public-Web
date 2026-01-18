@@ -2,6 +2,7 @@ import ScrollToTop from "./app/elements/scroll-to-top";
 import RootLayout from "./layouts/root-layout";
 import Loader from "./app/elements/loader";
 import { useState } from "react";
+import FloatingSocialButtons from "./app/components/FloatingSocialButtons";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       { isLoading && <Loader /> }
       <ScrollToTop />
       <RootLayout />
+      <FloatingSocialButtons/>
     </>
   );
 }

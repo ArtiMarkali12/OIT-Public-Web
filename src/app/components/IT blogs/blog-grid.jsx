@@ -8,28 +8,46 @@ const DOMAIN = process.env.REACT_APP_DOMAIN;
 export default function BlogGridPage() {
   const [blogs, setBlogs] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
-  const [loading, setLoading] = useState(true); // ✅ loader state
+  const [imagePreview, setImagePreview] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // ================= FETCH BLOGS =================
+  /* ================= FETCH BLOGS ================= */
   const fetchBlogs = async () => {
-    setLoading(true); // start loader
+    setLoading(true);
     try {
       const res = await axios.get(`${API_BASE}/api/blogs`, {
-        headers: {
-          "x-domain": DOMAIN,
-        },
+        headers: { "x-domain": DOMAIN },
       });
       setBlogs(res.data || []);
     } catch (err) {
       console.error("Failed to load blogs", err);
     } finally {
-      setLoading(false); // stop loader
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchBlogs();
   }, []);
+
+  /* ================= SCROLL LOCK ================= */
+useEffect(() => {
+  const body = document.body;
+
+  if (selectedBlog || imagePreview) {
+    body.style.overflow = "hidden";
+    body.style.height = "100vh";
+  } else {
+    body.style.overflow = "";
+    body.style.height = "";
+  }
+
+  return () => {
+    body.style.overflow = "";
+    body.style.height = "";
+  };
+}, [selectedBlog, imagePreview]);
+
 
   return (
     <div className="blog-page">
@@ -42,11 +60,18 @@ export default function BlogGridPage() {
           <p>Loading blogs...</p>
         </div>
       ) : (
-        /* ================= GRID ================= */
         <div className="blog-grid">
           {blogs.map((b) => (
-            <div key={b._id} className="blog-card">
-              {b.image && <img src={b.image} alt="blog" />}
+            <div key={b._id} className="blog-card fade-up">
+              {b.image && (
+                <img
+                  src={b.image}
+                  alt="blog"
+                  className="clickable-img"
+                  onClick={() => setImagePreview(b.image)}
+                />
+              )}
+
               <div className="blog-content">
                 <h4>{b.title}</h4>
                 <small>By {b.author}</small>
@@ -58,10 +83,32 @@ export default function BlogGridPage() {
         </div>
       )}
 
-      {/* ================= MODAL ================= */}
+      {/* ================= IMAGE MODAL ================= */}
+      {imagePreview && (
+        <div className="modal-overlay" onClick={() => setImagePreview(null)}>
+          <div className="image-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close"
+              onClick={() => setImagePreview(null)}
+            >
+              &times;
+            </button>
+            <img src={imagePreview} alt="Preview" />
+          </div>
+        </div>
+      )}
+
+      {/* ================= BLOG CONTENT MODAL ================= */}
       {selectedBlog && (
         <div className="modal-overlay" onClick={() => setSelectedBlog(null)}>
           <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="modal-close"
+              onClick={() => setSelectedBlog(null)}
+            >
+              &times;
+            </button>
+
             <h2>{selectedBlog.title}</h2>
             <p>
               <b>{selectedBlog.author}</b>
@@ -74,13 +121,9 @@ export default function BlogGridPage() {
               <img src={selectedBlog.image} alt="" className="modal-image" />
             )}
 
-            {selectedBlog.paragraphs.map((p, i) => (
+            {selectedBlog.paragraphs?.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-
-            <button className="close-btn" onClick={() => setSelectedBlog(null)}>
-              Close
-            </button>
           </div>
         </div>
       )}

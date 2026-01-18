@@ -41,6 +41,7 @@ import {
 import "../Courses/courses.css";
 import { useState } from "react";
 import SocialButtons from "./SocialButtons";
+import FloatingSocialButtons from "../FloatingSocialButtons";
 // import SocialButtons from "./SocialButtons";
 
 export default function MEANStackPage() {
@@ -1126,7 +1127,9 @@ export default function MEANStackPage() {
           </Row>
         </Container>
       </section>
-      {/* <SocialButtons /> */}
+     
+
+     <FloatingSocialButtons/>
 
 
       {/* ===== CTA ===== */}

@@ -42,6 +42,7 @@ import {
 import "../Courses/courses.css";
 import { useState } from "react";
 import SocialButtons from "./SocialButtons";
+import FloatingSocialButtons from "../FloatingSocialButtons";
 
 export default function RDBMSPage() {
   const modules = [
@@ -949,8 +950,10 @@ export default function RDBMSPage() {
           </Row>
         </Container>
       </section>
-      {/* <SocialButtons /> */}
+     
 
+     <FloatingSocialButtons/>
+     
       {/* ===== CTA ===== */}
       <section className="cta-section text-center">
         <h2>Start Your IT Career Today</h2>

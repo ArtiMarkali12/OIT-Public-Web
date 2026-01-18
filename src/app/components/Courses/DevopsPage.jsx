@@ -45,6 +45,7 @@ import {
 import "../Courses/courses.css";
 import { useState } from "react";
 import SocialButtons from "./SocialButtons";
+import FloatingSocialButtons from "../FloatingSocialButtons";
 
 export default function JavaFullStackPage() {
   const modules = [
@@ -841,7 +842,8 @@ export default function JavaFullStackPage() {
           </Row>
         </Container>
       </section>
-      {/* <SocialButtons /> */}
+     
+     <FloatingSocialButtons/>
 
       {/* ===== CTA ===== */}
       <section className="cta-section text-center">

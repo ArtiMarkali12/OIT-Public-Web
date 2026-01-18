@@ -20,6 +20,31 @@ function Header2() {
     setIsActive(false);
   }, [location.pathname]);
 
+
+useEffect(() => {
+  if (isActive) {
+    document.body.classList.add("no-scroll");
+  } else {
+    document.body.classList.remove("no-scroll");
+  }
+
+  // cleanup (important)
+  return () => {
+    document.body.classList.remove("no-scroll");
+  };
+}, [isActive]);
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     /* ✅ FIX 1: removed navbar-collapse from header */
     <header className={`header-nav ${isActive ? "active" : ""}`}>

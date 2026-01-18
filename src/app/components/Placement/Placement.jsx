@@ -3,7 +3,6 @@ import "./placement.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// ENV
 const API = process.env.REACT_APP_API_BASE_URL;
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
@@ -18,11 +17,9 @@ function Placement() {
   const fetchPlacements = useCallback(async () => {
     try {
       setLoading(true);
-
       const { data } = await axios.get(`${API}/api/placements`, {
         headers: { "x-domain": DOMAIN },
       });
-
       setPlacements(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Failed to fetch placements", error);
@@ -35,14 +32,13 @@ function Placement() {
     fetchPlacements();
   }, [fetchPlacements]);
 
-  /* ================= HANDLERS ================= */
   const openImage = (img) => setSelectedImg(img);
   const closeModal = () => setSelectedImg(null);
 
   return (
     <>
-      {/* ================= HERO SECTION ================= */}
-      <section className="placement-hero-section shadow">
+      {/* ================= HERO ================= */}
+      {/* <section className="placement-hero-section shadow">
         <div className="container h-100">
           <div className="row h-100 align-items-center">
             <div className="col-lg-8 col-md-10">
@@ -69,13 +65,24 @@ function Placement() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* ================= PLACEMENT SECTION ================= */}
+      {/* ================= PLACEMENTS ================= */}
       <section className="placement-section mt-1">
         <div className="container">
-          {/* Title */}
           <div className="text-center mb-5">
+
+  <h6 className="" style={{ color: "#a43013" }}>
+                Start Your Career Journey
+              </h6>
+
+             <h1 className="" style={{ color: "orange" }}>
+  <b>Turning Skills into Careers 
+  Learning to Professional <br /> Excellence</b>
+</h1>
+
+
+
             <h2 className="placement-title">Our Latest Placed Students</h2>
             <p className="placement-subtitle">
               Meet our talented students who secured their dream jobs.
@@ -92,22 +99,22 @@ function Placement() {
             </div>
           )}
 
-          {/* ================= PLACEMENT CARDS ================= */}
+          {/* ================= CARDS ================= */}
           {!loading && (
-            <div className="row">
+            <div className="row align-items-stretch">
               {placements.map((item, index) => (
-                <div key={item._id || index} className="col-lg-3 col-md-6 mb-4">
+                <div
+                  key={item._id || index}
+                  className="col-lg-3 col-md-6 mb-4 d-flex"
+                >
+                  {/* 🔥 h-100 + flex-column = SAME HEIGHT */}
                   <div
-                    className="placement-card text-center"
+                    className="placement-card text-center d-flex flex-column h-100 w-100"
                     onClick={() => openImage(item.image)}
                     style={{ animationDelay: `${index * 0.15}s` }}
                     role="button"
                     tabIndex={0}
                   >
-                    {/* <span className="placement-OrangeITech-head">
-                      Congragulations
-                    </span> */}
-
                     <div className="placement-img">
                       <img
                         src={item.image || "https://via.placeholder.com/120"}
@@ -127,12 +134,13 @@ function Placement() {
                     </h6>
 
                     <p className="student-college">
-                      <strong>College Name : </strong>{" "}
+                      <strong>College Name : </strong>
                       {item.college || "College Name"}
                     </p>
 
-                    <div className="student-package">
-                      <strong>Package : </strong>{" "}
+                    {/* 🔥 pushes content evenly */}
+                    <div className="student-package mt-auto">
+                      <strong>Package : </strong>
                       {item.packageAmount || "Package Not Disclosed"}
                     </div>
                   </div>
@@ -153,7 +161,16 @@ function Placement() {
               />
             </div>
           )}
+
+          
         </div>
+
+
+
+
+
+
+        
       </section>
     </>
   );

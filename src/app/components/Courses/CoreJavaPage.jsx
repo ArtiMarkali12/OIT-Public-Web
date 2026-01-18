@@ -38,6 +38,7 @@ import {
 import "../Courses/courses.css";
 import { useState } from "react";
 import SocialButtons from "./SocialButtons";
+import FloatingSocialButtons from "../FloatingSocialButtons";
 
 export default function CoreJavaPage() {
   const modules = [
@@ -870,7 +871,8 @@ export default function CoreJavaPage() {
           </Row>
         </Container>
       </section>
-      {/* <SocialButtons /> */}
+     
+     <FloatingSocialButtons/>
 
       {/* ===== CTA ===== */}
       <section className="cta-section text-center">

@@ -162,6 +162,33 @@
 }
 
 
+@media (max-width: 600px) {
+  .footer-container {
+    text-align: center;
+    grid-template-columns: repeat(2, 1fr); /* ✅ MOBILE = 2 COLUMNS */
+    gap: 20px;
+  }
+
+  .footer-col h4::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .float-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .float-btn img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+
+
+
 
 
 

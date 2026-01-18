@@ -15,7 +15,7 @@ function SectionAboutCompany2Inner() {
                         textAlign: 'left',
                         margin: '0' 
                     }}>
-                        Why Choose <span style={{ color: '#FF6600' }}>Orange ITech?</span>
+                        Why Choose <span style={{ color: '#FF6600' ,}}><br></br>&nbsp; &nbsp;Orange ITech?</span>
                     </h2>
                 </div>
 
@@ -43,7 +43,7 @@ function SectionAboutCompany2Inner() {
                     {/* TEXT CONTENT SECTION (RIGHT) */}
                     <div className="custom-content-col">
                         <div className="sx-about-bx3-content"> 
-                            <h4 style={{ color: '#222', fontSize: '20px', fontWeight: 'bold', marginBottom: '15px' }}>
+                            <h4 style={{ color: '#222', fontSize: '20px', fontWeight: 'bold', marginBottom: '15px' ,marginTop:'20px'}}>
                                 Orange ITech is one of the Best Training Institutes in Pune with Placement Support.
                             </h4>
                             <p style={{ fontSize: '16px', lineHeight: '1.7', color: '#444', marginBottom: '15px' }}>
