@@ -220,9 +220,6 @@
     opacity: 1;
   }
 }
-body {
-  overscroll-behavior: contain;
-}
 /* Modal wrapper */
 .blog-modal,
 .image-modal {
